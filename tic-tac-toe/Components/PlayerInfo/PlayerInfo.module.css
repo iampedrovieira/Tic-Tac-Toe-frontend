@@ -1,0 +1,57 @@
+.main_box{
+     height: 100%;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+}
+
+.player_info{
+  height: 90%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+
+.separator{
+  align-self: center;
+  height: 9%;
+  width: 80%;
+  background-image: url('./Line-separator.svg');
+}
+
+.name{
+  max-width: 84%;
+  word-wrap: break-word;
+  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+}
+.option{
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 0.5%;
+  margin-left: 0.5%;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+.option1{
+  background-image: url('../GameButton/button-X.svg');
+}
+
+.option2{
+  background-image: url('../GameButton/button-O.svg');
+}
+
+.optionWaitting{
+  background-color: var(--PLAYER-UNCHECK-COLOR);
+}
+
+.optionReady{
+  background-color: var(--PLAYER-CHECK-COLOR);
+}
+
+
+.spectator{
+  background-color: var(--PLAYER-SPECTATOR-COLOR);
+}

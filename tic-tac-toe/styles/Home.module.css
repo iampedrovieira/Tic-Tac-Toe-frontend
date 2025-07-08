@@ -1,0 +1,42 @@
+.container { 
+  background-color: var(--PRIMARY-COLOR-BLACK);
+  display: grid;
+  height: 100%;
+  height: 100%;
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 10% 85%;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "Title Title"
+    "Players Game";
+}
+
+.Title { 
+  grid-area: Title;
+  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+  align-self: center;
+  padding-left: 25%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Players {
+  grid-area: Players;
+}
+
+.Game {
+  background-color: var(--PRIMARY-COLOR-BLACK);
+  grid-area: Game;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  align-self: center;
+}
+.message{
+  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+}
+ 

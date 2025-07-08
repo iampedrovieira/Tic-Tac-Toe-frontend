@@ -1,0 +1,59 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: 'Arial', cursive;
+  font-size:large;
+}
+#div_main {
+  height: 100%;
+  width: 100%;
+}
+#__next{
+  height: 100%;
+  width: 100%;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--SECONDARY-COLOR-WHITE) var(--PRIMARY-COLOR-BLACK);
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+  background:var(--PRIMARY-COLOR-BLACK);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--SECONDARY-COLOR-WHITE);
+  border-radius: 20px;
+  border: 3px solid var(--PRIMARY-COLOR-BLACK);
+}
+
+:root{
+  /* Colors */
+  --PRIMARY-COLOR-BLACK:#252525;
+  --SECONDARY-COLOR-WHITE:#EEEEEE;
+  --TEXT-PRIMARY-COLOR-WHITE:#F2F4FB;
+  --PLAYER1-COLOR:#0466c8;
+  --PLAYER2-COLOR:#ba181b;
+  --PLAYER-UNCHECK-COLOR:rgb(231, 243, 0);
+  --PLAYER-CHECK-COLOR:rgb(73, 243, 0);
+  --PLAYER-SPECTATOR-COLOR:rgb(109, 109, 109);
+  
+  /* Fonts */
+
+  /*Sizes*/
+}
+
+.board-svg{
+  stroke:var(--SECONDARY-COLOR-WHITE);
+}
+
+

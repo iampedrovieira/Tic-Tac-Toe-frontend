@@ -1,0 +1,37 @@
+.modal_main{
+    background-color: var(--PRIMARY-COLOR-BLACK);
+}
+
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--PRIMARY-COLOR-BLACK);
+    border: 20px solid var(--PRIMARY-COLOR-BLACK);
+    border-radius: 50px;
+    box-shadow: 24;
+  }
+
+.input{
+    border-radius: 50px;
+}
+
+.text{
+    color: var(--TEXT-PRIMARY-COLOR-WHITE);
+}
+
+    
+
+.button{
+    border: 20px solid var(--PRIMARY-COLOR-BLACK);
+    border-radius: 15px;
+    background-color: var(--TEXT-PRIMARY-COLOR-WHITE);
+    color: var(--PRIMARY-COLOR-BLACK);
+}

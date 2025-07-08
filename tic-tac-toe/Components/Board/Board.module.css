@@ -1,0 +1,17 @@
+.game{
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  max-height: fit-content;
+  background-image: url('./Board.svg');
+}
+
+.line{
+  display: flex;
+  flex-direction: row;
+}
+
+.title{
+  display: flex;
+  flex-direction: column;
+}

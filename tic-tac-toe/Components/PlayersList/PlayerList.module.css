@@ -1,0 +1,23 @@
+
+.container{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.title{
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  overflow-x: hidden;
+  float: left;
+}
