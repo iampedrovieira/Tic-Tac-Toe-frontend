@@ -16,8 +16,8 @@ export default class PlayerListComponent extends Component<{players:Player[] }> 
             <div className={styles.list}>
             {this.props.players.map((player,index)=>{
                 return(
-                    <div>
-                    <PlayerInfo key={index} player={player} />
+                    <div key={index}>
+                    <PlayerInfo  player={player} />
                     </div>
                 )
               })}
