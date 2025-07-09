@@ -1,0 +1,46 @@
+/* ============================================
+   GAME COLOR PALETTE - CSS CUSTOM PROPERTIES
+   ============================================ */
+
+:root {
+  /* Game Colors */
+  --color-x-blue: #0466c8;
+  --color-o-red: #ba181b;
+  
+  /* Game Color Variants */
+  --color-x-blue-light: #0582f0;
+  --color-x-blue-dark: #034078;
+  --color-o-red-light: #d90429;
+  --color-o-red-dark: #9d0208;
+  
+  /* Gradient Combinations */
+  --gradient-game-primary: linear-gradient(90deg, var(--color-o-red) 20%, var(--color-x-blue) 80%);
+  --gradient-game-hover: linear-gradient(90deg, var(--color-o-red-light) 20%, var(--color-x-blue-light) 80%);
+  --gradient-game-pressed: linear-gradient(90deg, var(--color-o-red-dark) 20%, var(--color-x-blue-dark) 80%);
+  
+  /* Button Shadows */
+  --shadow-game-glow: 0 8px 25px rgba(186, 24, 27, 0.3);
+  --shadow-game-hover: 0 12px 35px rgba(186, 24, 27, 0.4);
+}
+
+/* ============================================
+   GAME ICON GLASS EFFECTS
+   ============================================ */
+
+.game-icon-glass {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.game-icon-glass:hover {
+  transform: translateY(-2px) scale(1.1);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3)) 
+          drop-shadow(0 3px 6px rgba(0, 0, 0, 0.2)) 
+          drop-shadow(0 0 20px rgba(255, 255, 255, 0.1)) !important;
+}
+
+.game-icon-glass:active {
+  transform: translateY(0) scale(1.05);
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) 
+          drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1)) !important;
+}

@@ -1,0 +1,267 @@
+/* ============================================
+   GLASS UI COMPONENTS STYLES
+   ============================================ */
+
+/* ========== GLASS INPUT ========== */
+.glass-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.glass-input-label {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-xs);
+}
+
+.glass-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-weight: var(--font-weight-normal);
+  transition: all var(--transition-medium);
+  box-sizing: border-box;
+}
+
+.glass-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.glass-input:focus {
+  color: var(--text-primary);
+  border-color: var(--glass-border-focus);
+  box-shadow: var(--shadow-glass-focus);
+}
+
+.glass-input:disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Input Sizes */
+.glass-input-sm {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+}
+
+.glass-input-md {
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-md);
+}
+
+.glass-input-lg {
+  padding: var(--space-lg) var(--space-xl);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-lg);
+}
+
+/* Input Error State */
+.glass-input-error {
+  border-color: var(--status-error) !important;
+  box-shadow: 
+    0 0 0 2px rgba(239, 68, 68, 0.2),
+    var(--shadow-glass-md) !important;
+}
+
+.glass-input-error-message {
+  color: var(--status-error);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  margin-top: var(--space-xs);
+}
+
+/* ========== GLASS BUTTON ========== */
+.glass-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-weight: var(--font-weight-semibold);
+  text-align: center;
+  transition: all var(--transition-medium);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.glass-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.glass-button:disabled:hover {
+  background: var(--glass-primary);
+  border-color: var(--glass-border);
+  box-shadow: var(--shadow-glass-md);
+  transform: none;
+}
+
+/* Button Variants */
+.glass-button-primary {
+  background: var(--glass-primary);
+}
+
+.glass-button-secondary {
+  background: var(--glass-secondary);
+}
+
+.glass-button-accent {
+  background: var(--glass-accent);
+  border-color: var(--glass-border-hover);
+}
+
+/* Button Sizes */
+.glass-button-sm {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  border-radius: var(--radius-sm);
+  min-height: 2rem;
+}
+
+.glass-button-md {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-md);
+  min-height: 2.5rem;
+}
+
+.glass-button-lg {
+  padding: var(--space-lg) var(--space-2xl);
+  font-size: var(--font-size-lg);
+  border-radius: var(--radius-lg);
+  min-height: 3rem;
+}
+
+.glass-button-full-width {
+  width: 100%;
+}
+
+/* Button Loading State */
+.glass-button-loading {
+  color: transparent;
+}
+
+.glass-button-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--text-primary);
+  border-radius: 50%;
+  animation: glass-button-spin 1s linear infinite;
+}
+
+@keyframes glass-button-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ========== GLASS MODAL ========== */
+.glass-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: var(--blur-subtle);
+  -webkit-backdrop-filter: var(--blur-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal-backdrop);
+  padding: var(--space-lg);
+}
+
+.glass-modal-container {
+  width: 100%;
+  max-width: 28rem;
+  border-radius: var(--radius-xl);
+  position: relative;
+  z-index: var(--z-modal);
+}
+
+.glass-modal-content {
+  padding: var(--space-2xl);
+  text-align: center;
+}
+
+.glass-modal-header {
+  margin-bottom: var(--space-xl);
+}
+
+.glass-modal-title {
+  color: var(--text-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--space-sm);
+}
+
+.glass-modal-subtitle {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.glass-modal-body {
+  margin-bottom: var(--space-xl);
+}
+
+.glass-modal-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+  .glass-modal-container {
+    max-width: 95vw;
+  }
+  
+  .glass-modal-content {
+    padding: var(--space-xl);
+  }
+  
+  .glass-modal-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .glass-modal-subtitle {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-modal-overlay {
+    padding: var(--space-md);
+  }
+  
+  .glass-modal-content {
+    padding: var(--space-lg);
+  }
+  
+  .glass-modal-title {
+    font-size: var(--font-size-xl);
+  }
+}

@@ -1,0 +1,123 @@
+/* 
+==============================================
+LIQUID GLASS CSS VARIABLES
+==============================================
+Simple variables you can change to customize the liquid glass effect
+*/
+
+:root {
+  /* 
+  GLASS EFFECT COLORS - Change these to customize the look
+  ---------------------------------------------------- */
+  
+  /* Dark theme colors (default) */
+  --glass-bg: rgba(255, 255, 255, 0.1);          /* Background transparency */
+  --glass-border: rgba(255, 255, 255, 0.2);      /* Border color */
+  --glass-text: #ffffff;                          /* Text color */
+  --glass-blur: 20px;                             /* How blurry the background is */
+  
+  /* 
+  GLASS EFFECT SHADOWS - Change these for depth
+  ---------------------------------------------------- */
+  --glass-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),               /* Large soft shadow */
+    0 2px 8px rgba(0, 0, 0, 0.2);                /* Small close shadow */
+    
+  --glass-shadow-hover: 
+    0 12px 48px rgba(0, 0, 0, 0.4),              /* Enhanced shadow on hover */
+    0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* 
+Light theme colors - automatically applied when user prefers light mode
+------------------------------------------------------------------------ */
+[data-theme="light"] {
+  --glass-bg: rgba(255, 255, 255, 0.8);          /* More opaque in light mode */
+  --glass-border: rgba(0, 0, 0, 0.1);            /* Dark border for light mode */
+  --glass-text: #000000;                          /* Dark text for light mode */
+  
+  --glass-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),               /* Softer shadows in light mode */
+    0 2px 8px rgba(0, 0, 0, 0.05);
+    
+  --glass-shadow-hover: 
+    0 12px 48px rgba(0, 0, 0, 0.15),
+    0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+==============================================
+LIQUID GLASS UTILITY CLASSES
+==============================================
+Simple classes you can use on any element to add glass effect
+*/
+
+/* 
+Basic glass effect - apply to any element
+----------------------------------------- */
+.liquid-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+}
+
+/* 
+Interactive glass effect - for buttons and clickable elements
+------------------------------------------------------------ */
+.liquid-glass-interactive {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.liquid-glass-interactive:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* 
+Input glass effect - for form inputs
+----------------------------------- */
+.liquid-glass-input {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  color: var(--glass-text);
+  transition: all 0.3s ease;
+}
+
+.liquid-glass-input:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* 
+==============================================
+HOW TO USE THESE STYLES
+==============================================
+
+1. For basic glass effect on any element:
+   <div className="liquid-glass">Content</div>
+
+2. For interactive elements (buttons, cards):
+   <button className="liquid-glass-interactive">Click me</button>
+
+3. For form inputs:
+   <input className="liquid-glass-input" />
+
+4. To customize colors, change the CSS variables at the top of this file
+
+5. To change blur amount, modify --glass-blur variable
+
+6. Light/dark theme is automatic based on user's system preference
+*/

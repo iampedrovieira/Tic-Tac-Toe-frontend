@@ -2,7 +2,6 @@
   background-color: var(--PRIMARY-COLOR-BLACK);
   display: grid;
   height: 100%;
-  height: 100%;
   grid-template-columns: 25% 75%;
   grid-template-rows: 10% 85%;
   gap: 0px 0px;
@@ -36,7 +35,7 @@
   width: 100%;
   align-self: center;
 }
-.message{
+
+.message {
   color: var(--TEXT-PRIMARY-COLOR-WHITE);
 }
- 
