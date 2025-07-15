@@ -4,6 +4,10 @@
   max-width: fit-content;
   max-height: fit-content;
   background-image: url('./Board.svg');
+  margin: 0 auto;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .line{
@@ -14,4 +18,31 @@
 .title{
   display: flex;
   flex-direction: column;
+}
+
+/* Mobile optimizations for the game board */
+@media (max-width: 768px) {
+  .game {
+    width: 100%;
+    max-width: 85vw;
+    align-self: center;
+    margin: 1rem auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .game {
+    width: 100%;
+    max-width: 90vw;
+    margin: 0.5rem auto;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media (max-width: 768px) and (orientation: landscape) {
+  .game {
+    max-width: 50vh;
+    max-height: 50vh;
+    margin: 0 auto;
+  }
 }

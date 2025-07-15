@@ -43,6 +43,9 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
   
   // New state for room creation
   const [newRoomName, setNewRoomName] = useState<string>("");
+  
+  // State for mobile sidebar
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
   // Helper function to get current room display name
   const getCurrentRoomName = () => {
@@ -89,6 +92,35 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
     onPlayerMove(socket, setGame, setMessage);
   }, [socket, playerId]);
 
+  // Close sidebar when game starts (mobile only)
+  useEffect(() => {
+    if (game && isSidebarOpen) {
+      setIsSidebarOpen(false);
+    }
+  }, [game]);
+
+  // Handle escape key to close sidebar
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isSidebarOpen) {
+        setIsSidebarOpen(false);
+      }
+    };
+
+    if (isSidebarOpen) {
+      document.addEventListener('keydown', handleEscapeKey);
+      // Prevent body scroll when sidebar is open
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscapeKey);
+      document.body.style.overflow = 'unset';
+    };
+  }, [isSidebarOpen]);
+
   function handleName(): void {
     if (!name) return;
     if (!socket) return;
@@ -124,6 +156,14 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
     }
   }
 
+  function toggleSidebar() {
+    setIsSidebarOpen(!isSidebarOpen);
+  }
+
+  function closeSidebar() {
+    setIsSidebarOpen(false);
+  }
+
   return (
     <div className={styles.container}>
       {name && !hideNameBox && (
@@ -139,8 +179,35 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
             <h3 className={styles.playerVs}>{getPlayerVsText()}</h3>
           </div>
 
+          {/* Mobile Sidebar Toggle */}
+          <div className={styles.sidebarToggle}>
+            <button 
+              onClick={toggleSidebar} 
+              className={styles.sidebarToggleButton}
+              aria-label="Open menu"
+            >
+              <span>☰</span>
+              Players & Rooms
+            </button>
+          </div>
+
+          {/* Sidebar Overlay */}
+          <div 
+            className={`${styles.sidebarOverlay} ${isSidebarOpen ? styles.open : ''}`}
+            onClick={closeSidebar}
+          />
+
           {/* Sidebar with Players and Room Creator */}
-          <div className={styles.Sidebar}>
+          <div className={`${styles.Sidebar} ${isSidebarOpen ? styles.open : ''}`}>
+            {/* Close button for mobile */}
+            <button 
+              onClick={closeSidebar} 
+              className={styles.sidebarCloseButton}
+              aria-label="Close menu"
+            >
+              ×
+            </button>
+
             {/* Players List */}
             <div className={styles.Players}>
               <PlayerListComponent players={playersList} />

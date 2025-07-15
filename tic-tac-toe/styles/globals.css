@@ -2,6 +2,7 @@
 @import './theme.css';
 @import './components.css';
 @import './game-colors.css';
+@import './mobile.css';
 
 /* Import simple liquid glass system for modal (legacy fallback) */
 @import './liquid-glass-simple.css';
@@ -16,16 +17,36 @@ body {
   font-size: large;
   background: var(--bg-primary);
   color: var(--text-primary);
+  /* Mobile optimizations */
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  overscroll-behavior: none;
 }
 
-#div_main {
-  height: 100%;
-  width: 100%;
-}
-
+/* Ensure viewport height works correctly on mobile */
+#div_main,
 #__next {
   height: 100%;
   width: 100%;
+  /* Use dynamic viewport height for mobile browsers */
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Mobile-specific font size adjustments */
+@media (max-width: 768px) {
+  html,
+  body {
+    font-size: medium;
+  }
+}
+
+@media (max-width: 480px) {
+  html,
+  body {
+    font-size: 14px;
+  }
 }
 
 * {
