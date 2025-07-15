@@ -128,17 +128,24 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
     <div className={styles.container}>
       {name && !hideNameBox && (
         <>
-          {/* Game Header - Top Left */}
+          {/* Game Header - Just the title */}
           <div className={styles.GameHeader}>
             <h1 className={styles.gameTitle}>Tricky-Tac-Toe</h1>
-            <div className={styles.roomInfo}>
-              <h2 className={styles.roomName}>{getCurrentRoomName()}</h2>
-              <h3 className={styles.playerVs}>{getPlayerVsText()}</h3>
-            </div>
           </div>
 
-          {/* Sidebar with Room Creator and Players */}
+          {/* Room Info - Centered above game board */}
+          <div className={styles.RoomInfo}>
+            <h2 className={styles.roomName}>{getCurrentRoomName()}</h2>
+            <h3 className={styles.playerVs}>{getPlayerVsText()}</h3>
+          </div>
+
+          {/* Sidebar with Players and Room Creator */}
           <div className={styles.Sidebar}>
+            {/* Players List */}
+            <div className={styles.Players}>
+              <PlayerListComponent players={playersList} />
+            </div>
+
             {/* Room Creator */}
             <div className={styles.RoomCreator}>
               <h3 className={styles.roomCreatorTitle}>Create New Room</h3>
@@ -160,11 +167,6 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
                   Create
                 </button>
               </div>
-            </div>
-
-            {/* Players List */}
-            <div className={styles.Players}>
-              <PlayerListComponent players={playersList} />
             </div>
           </div>
 
