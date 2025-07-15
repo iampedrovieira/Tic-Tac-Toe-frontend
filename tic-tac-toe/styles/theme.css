@@ -5,16 +5,16 @@
 :root {
   /* ========== STANDARDIZED COLOR PALETTE ========== */
   /* Main Background - Professional Dark Theme */
-  --bg-primary: #0f0f23;          /* Deep navy-blue dark (not black) */
-  --bg-secondary: #1a1a2e;        /* Slightly lighter navy */
-  --bg-tertiary: #252545;         /* Even lighter for subtle contrast */
-  --bg-accent: #2a2a4a;           /* Accent background for highlights */
+  --bg-primary: #000000;          /* Pure black - main background */
+  --bg-secondary: #0a0a0a;        /* Very dark gray for subtle contrast */
+  --bg-tertiary: #1a1a1a;         /* Dark gray for cards/sections */
+  --bg-accent: #2a2a2a;           /* Medium dark gray for highlights */
   
-  /* Glass Material Colors - Consistent with dark theme */
-  --glass-bg: rgba(42, 42, 74, 0.3);           /* Main glass background */
-  --glass-bg-light: rgba(42, 42, 74, 0.4);     /* Lighter glass for cards */
-  --glass-bg-hover: rgba(42, 42, 74, 0.5);     /* Hover state */
-  --glass-bg-focus: rgba(42, 42, 74, 0.6);     /* Focus state */
+  /* Glass Material Colors - Consistent with black theme */
+  --glass-bg: rgba(255, 255, 255, 0.08);       /* Main glass background - subtle white tint */
+  --glass-bg-light: rgba(255, 255, 255, 0.12); /* Lighter glass for cards */
+  --glass-bg-hover: rgba(255, 255, 255, 0.15); /* Hover state */
+  --glass-bg-focus: rgba(255, 255, 255, 0.18); /* Focus state */
   
   /* Glass Borders - Consistent opacity */
   --glass-border: rgba(255, 255, 255, 0.15);
@@ -151,10 +151,81 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    var(--glass-border-hover),
     transparent
   );
   pointer-events: none;
+}
+
+/* Glass variations */
+.glass-light {
+  background: var(--glass-bg-light);
+}
+
+.glass-hover:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-glass-hover);
+}
+
+.glass-focus:focus {
+  background: var(--glass-bg-focus);
+  border-color: var(--glass-border-focus);
+  box-shadow: var(--shadow-glass-focus);
+}
+
+/* Quick theme application classes */
+.theme-modal {
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-glass);
+}
+
+.theme-card {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-glass);
+}
+
+.theme-input {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: var(--backdrop-filter-light);
+  -webkit-backdrop-filter: var(--backdrop-filter-light);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  transition: var(--transition-medium);
+}
+
+.theme-input:focus {
+  background: var(--glass-bg-focus);
+  border-color: var(--glass-border-focus);
+  box-shadow: var(--shadow-glass-focus);
+}
+
+.theme-button {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  transition: var(--transition-medium);
+  cursor: pointer;
+}
+
+.theme-button:hover:not(:disabled) {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-glass-hover);
 }
 
 .glass-subtle {

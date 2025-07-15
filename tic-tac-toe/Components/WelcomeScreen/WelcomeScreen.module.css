@@ -23,15 +23,12 @@
 .welcomeContainer {
   width: 100%;
   max-width: 28rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 1rem;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-xl);
+  box-shadow: var(--shadow-glass);
   position: relative;
   overflow: hidden;
 }
@@ -42,19 +39,19 @@
 }
 
 .welcomeTitle {
-  color: rgba(255, 255, 255, 0.95);
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.2;
+  color: var(--text-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
   margin: 0 0 0.75rem 0;
 }
 
 .welcomeSubtitle {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
   line-height: 1.4;
   margin: 0 0 1.5rem 0;
-  font-weight: 400;
+  font-weight: var(--font-weight-normal);
 }
 
 /* Info Block Styles */

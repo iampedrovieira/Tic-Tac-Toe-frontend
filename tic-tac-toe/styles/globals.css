@@ -17,6 +17,7 @@ body {
   font-size: large;
   background: var(--bg-primary);
   color: var(--text-primary);
+  overflow: hidden; /* Prevent scrolling */
   /* Mobile optimizations */
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
@@ -29,6 +30,7 @@ body {
 #__next {
   height: 100%;
   width: 100%;
+  overflow: hidden; /* Prevent scrolling */
   /* Use dynamic viewport height for mobile browsers */
   min-height: 100vh;
   min-height: 100dvh;
