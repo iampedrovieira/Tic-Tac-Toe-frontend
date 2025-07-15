@@ -1,40 +1,50 @@
 .main_box{
-     height: 100%;
-     width: 100%;
-     display: flex;
-     flex-direction: column;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
 }
 
 .player_info{
-  height: 90%;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0;
+  gap: 0.75rem;
 }
 
 .separator{
-  align-self: center;
-  height: 9%;
-  width: 80%;
-  background-image: url('./Line-separator.svg');
+  display: none; /* Hide separator for cleaner look in the new design */
 }
 
 .name{
-  max-width: 84%;
+  flex: 1;
   word-wrap: break-word;
-  color: var(--text-primary);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
+
 .option{
-  align-self: flex-end;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 0.5%;
-  margin-left: 0.5%;
-  height: 1rem;
-  width: 1rem;
+  flex-shrink: 0;
+  height: 1.25rem;
+  width: 1.25rem;
   border-radius: 50%;
+  transition: all 0.2s ease;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
 .option1{
   background-image: url('../GameButton/button-X.svg');
 }
@@ -44,14 +54,102 @@
 }
 
 .optionWaitting{
-  background-color: var(--PLAYER-UNCHECK-COLOR);
+  background-color: rgba(255, 193, 7, 0.8);
+  border: 2px solid rgba(255, 193, 7, 0.4);
+  box-shadow: 
+    0 2px 8px rgba(255, 193, 7, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .optionReady{
-  background-color: var(--PLAYER-CHECK-COLOR);
+  background-color: rgba(34, 197, 94, 0.8);
+  border: 2px solid rgba(34, 197, 94, 0.4);
+  box-shadow: 
+    0 2px 8px rgba(34, 197, 94, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
+/* Hover effects for better interactivity */
+.main_box:hover .name {
+  color: rgba(255, 255, 255, 1);
+}
 
+.main_box:hover .option {
+  transform: scale(1.1);
+}
+
+/* Status indicator animations */
+.optionWaitting {
+  animation: pulse-waiting 2s ease-in-out infinite;
+}
+
+.optionReady {
+  animation: pulse-ready 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-waiting {
+  0%, 100% { 
+    box-shadow: 
+      0 2px 8px rgba(255, 193, 7, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 4px 16px rgba(255, 193, 7, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+@keyframes pulse-ready {
+  0%, 100% { 
+    box-shadow: 
+      0 2px 8px rgba(34, 197, 94, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+  50% { 
+    box-shadow: 
+      0 4px 16px rgba(34, 197, 94, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .player_info {
+    gap: 0.5rem;
+    padding: 0.125rem 0;
+  }
+  
+  .name {
+    font-size: 0.85rem;
+  }
+  
+  .option {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .player_info {
+    gap: 0.375rem;
+  }
+  
+  .name {
+    font-size: 0.8rem;
+  }
+  
+  .option {
+    height: 0.875rem;
+    width: 0.875rem;
+  }
+}
+
+/* Additional status styles */
 .spectator{
-  background-color: var(--PLAYER-SPECTATOR-COLOR);
+  background-color: rgba(156, 163, 175, 0.8);
+  border: 2px solid rgba(156, 163, 175, 0.4);
+  box-shadow: 
+    0 2px 8px rgba(156, 163, 175, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }

@@ -1,31 +1,81 @@
 .container { 
   background-color: var(--bg-primary);
   display: grid;
-  height: 100%;
-  grid-template-columns: 25% 75%;
-  grid-template-rows: 10% 85%;
-  gap: 0px 0px;
-  grid-auto-flow: row;
+  height: 100vh;
+  grid-template-columns: 320px 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  box-sizing: border-box;
   grid-template-areas:
-    "Title Title"
-    "Players Game";
+    "Sidebar Title"
+    "Sidebar Game";
 }
 
 .Title { 
   grid-area: Title;
   color: var(--text-primary);
-  align-self: center;
-  padding-left: 25%;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 .Players {
-  grid-area: Players;
+  grid-area: Sidebar;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass effect highlight line for Players sidebar */
+.Players::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 .Game {
-  background-color: var(--bg-primary);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   grid-area: Game;
   display: flex;
   flex-direction: column;
@@ -33,9 +83,73 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  align-self: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glass effect highlight line for Game area */
+.Game::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 .message {
   color: var(--text-primary);
+  text-align: center;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  margin: 1rem;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 280px 1fr;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+    grid-template-areas:
+      "Title"
+      "Sidebar" 
+      "Game";
+    height: auto;
+    min-height: 100vh;
+  }
+  
+  .Players {
+    max-height: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .Title h1 {
+    font-size: 1.5rem;
+  }
 }

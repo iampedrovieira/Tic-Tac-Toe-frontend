@@ -1,23 +1,146 @@
 
-.container{
+.container {
   display: flex;
   flex-direction: column;
   height: 100%;
   width: 100%;
+  padding: 1.5rem;
+  box-sizing: border-box;
 }
 
-.title{
-  align-self: center;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  color: var(--text-primary);
+.title {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.title h2 {
+  margin: 0;
+  padding: 0;
+  color: inherit;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  overflow: scroll;
+  flex: 1;
+  overflow-y: auto;
   overflow-x: hidden;
-  float: left;
+  padding-right: 0.5rem;
+  margin-right: -0.5rem;
+  gap: 0.75rem;
+  
+  /* Custom Scrollbar Styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Webkit Scrollbar Styling */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+  margin: 0.5rem 0;
+}
+
+.list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.list::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Smooth scrolling behavior */
+.list {
+  scroll-behavior: smooth;
+}
+
+/* Player item styling enhancements */
+.list > div {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.list > div:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Empty state styling */
+.list:empty::after {
+  content: "No players connected";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .list {
+    gap: 0.5rem;
+    max-height: 150px;
+  }
+  
+  .list > div {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.75rem;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .list {
+    gap: 0.25rem;
+  }
+  
+  .list > div {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+  }
 }
