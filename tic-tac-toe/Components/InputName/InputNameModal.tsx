@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import styles from './InputNameModal.module.css';
 import { cn } from '../../utils/classNames';
-import { XIcon, OIcon } from '../UI/GameIcons';
+import WelcomeScreen from '../WelcomeScreen';
 
 interface InputNameModalProps {
   open: boolean;
@@ -115,48 +115,10 @@ const InputNameModal: React.FC<InputNameModalProps> = ({
   // Welcome Screen
   if (showWelcome) {
     return (
-      <div className={styles.overlay} onClick={handleClose}>
-        <div 
-          className={styles.welcomeContainer}
-          onClick={e => e.stopPropagation()}
-        >
-          <div className={styles.welcomeContent}>
-            <h1 className={styles.welcomeTitle}>Welcome to Trick-Tac-Toe</h1>
-            <p className={styles.welcomeSubtitle}>
-              Not your grandma's game!
-            </p>
-            
-            <div className={styles.infoBlock}>
-              <div className={styles.infoItem}>
-                <div className={styles.infoIcon}>
-                  <XIcon size={18} />
-                </div>
-                <span className={styles.infoText}>You only have 3 active pieces at a time.</span>
-              </div>
-              
-              <div className={styles.infoItem}>
-                <div className={styles.infoIcon}>
-                  <OIcon size={18} />
-                </div>
-                <span className={styles.infoText}>Place a new one? The oldest vanishes.</span>
-              </div>
-            </div>
-            
-            <p className={styles.simpleText}>
-              Create a game at /room/roomname and share the link.
-            </p>
-            
-            <div className={styles.welcomeActions}>
-              <button 
-                className={cn(styles.button, styles.primaryButton)}
-                onClick={handleContinueToGame}
-              >
-                Let's Play!
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
+      <WelcomeScreen
+        open={showWelcome}
+        onContinue={handleContinueToGame}
+      />
     );
   }
 

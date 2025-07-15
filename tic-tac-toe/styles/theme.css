@@ -1,30 +1,31 @@
 /* ============================================
-   LIQUID GLASS THEME SYSTEM
+   LIQUID GLASS THEME SYSTEM - STANDARDIZED
    ============================================ */
 
 :root {
-  /* ========== COLOR PALETTE ========== */
-  /* Background & Base Colors */
-  --bg-primary: #0a0a0a;
-  --bg-secondary: #151515;
-  --bg-tertiary: #1a1a1a;
+  /* ========== STANDARDIZED COLOR PALETTE ========== */
+  /* Main Background - Professional Dark Theme */
+  --bg-primary: #0f0f23;          /* Deep navy-blue dark (not black) */
+  --bg-secondary: #1a1a2e;        /* Slightly lighter navy */
+  --bg-tertiary: #252545;         /* Even lighter for subtle contrast */
+  --bg-accent: #2a2a4a;           /* Accent background for highlights */
   
-  /* Glass Material Colors */
-  --glass-primary: rgba(255, 255, 255, 0.1);
-  --glass-secondary: rgba(255, 255, 255, 0.05);
-  --glass-tertiary: rgba(255, 255, 255, 0.03);
-  --glass-accent: rgba(255, 255, 255, 0.15);
+  /* Glass Material Colors - Consistent with dark theme */
+  --glass-bg: rgba(42, 42, 74, 0.3);           /* Main glass background */
+  --glass-bg-light: rgba(42, 42, 74, 0.4);     /* Lighter glass for cards */
+  --glass-bg-hover: rgba(42, 42, 74, 0.5);     /* Hover state */
+  --glass-bg-focus: rgba(42, 42, 74, 0.6);     /* Focus state */
   
-  /* Glass Borders */
-  --glass-border: rgba(255, 255, 255, 0.2);
-  --glass-border-hover: rgba(255, 255, 255, 0.3);
-  --glass-border-focus: rgba(255, 255, 255, 0.4);
+  /* Glass Borders - Consistent opacity */
+  --glass-border: rgba(255, 255, 255, 0.15);
+  --glass-border-hover: rgba(255, 255, 255, 0.25);
+  --glass-border-focus: rgba(255, 255, 255, 0.35);
   
-  /* Text Colors */
-  --text-primary: rgba(255, 255, 255, 0.9);
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --text-tertiary: rgba(255, 255, 255, 0.5);
-  --text-disabled: rgba(255, 255, 255, 0.3);
+  /* Text Colors - High contrast for readability */
+  --text-primary: rgba(255, 255, 255, 0.95);    /* Main text */
+  --text-secondary: rgba(255, 255, 255, 0.75);  /* Secondary text */
+  --text-tertiary: rgba(255, 255, 255, 0.55);   /* Placeholder/disabled */
+  --text-disabled: rgba(255, 255, 255, 0.35);   /* Disabled state */
   
   /* Status Colors */
   --status-success: rgba(34, 197, 94, 0.8);
@@ -32,41 +33,48 @@
   --status-warning: rgba(245, 158, 11, 0.8);
   --status-info: rgba(59, 130, 246, 0.8);
   
-  /* ========== GLASS EFFECTS ========== */
-  /* Backdrop Filters */
-  --blur-subtle: blur(8px);
-  --blur-medium: blur(12px);
-  --blur-strong: blur(20px);
+  /* ========== NEON GLOW EFFECTS ========== */
+  /* Button Glow Colors - Based on game colors */
+  --glow-blue: rgba(4, 102, 200, 0.3);        /* X Player Blue */
+  --glow-red: rgba(186, 24, 27, 0.3);         /* O Player Red */
+  --glow-white: rgba(255, 255, 255, 0.1);     /* Neutral White */
+  --glow-accent: rgba(255, 255, 255, 0.05);   /* Subtle Accent */
   
-  /* Box Shadows */
-  --shadow-glass-sm: 
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    0 1px 4px rgba(0, 0, 0, 0.1),
+  /* Neon Glow Shadows */
+  --shadow-neon-blue: 0 0 20px var(--glow-blue), 0 0 40px rgba(4, 102, 200, 0.15);
+  --shadow-neon-red: 0 0 20px var(--glow-red), 0 0 40px rgba(186, 24, 27, 0.15);
+  --shadow-neon-white: 0 0 15px var(--glow-white), 0 0 30px var(--glow-accent);
+  --shadow-neon-mixed: 0 0 20px var(--glow-red), 0 0 40px var(--glow-blue);
+  
+  /* Enhanced Hover Glows */
+  --shadow-neon-blue-hover: 0 0 25px rgba(4, 102, 200, 0.4), 0 0 50px rgba(4, 102, 200, 0.2);
+  --shadow-neon-red-hover: 0 0 25px rgba(186, 24, 27, 0.4), 0 0 50px rgba(186, 24, 27, 0.2);
+  --shadow-neon-white-hover: 0 0 20px rgba(255, 255, 255, 0.15), 0 0 40px rgba(255, 255, 255, 0.08);
+  
+  /* ========== GLASS EFFECTS STANDARD ========== */
+  /* Backdrop Filters - Consistent blur levels */
+  --backdrop-filter: blur(12px) saturate(1.2);
+  --backdrop-filter-light: blur(8px) saturate(1.1);
+  --backdrop-filter-strong: blur(16px) saturate(1.3);
+  
+  /* Box Shadows - Consistent depth layers */
+  --shadow-glass: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   
-  --shadow-glass-md: 
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
-  --shadow-glass-lg: 
-    0 8px 32px rgba(0, 0, 0, 0.2),
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  
-  /* Interactive Shadows */
   --shadow-glass-hover: 
-    0 8px 32px rgba(0, 0, 0, 0.25),
-    0 4px 16px rgba(0, 0, 0, 0.2),
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   
   --shadow-glass-focus: 
-    0 0 0 2px rgba(255, 255, 255, 0.2),
-    0 8px 32px rgba(0, 0, 0, 0.25),
-    0 4px 16px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 0 0 2px rgba(255, 255, 255, 0.1);
   
-  /* ========== SPACING ========== */
+  /* ========== SPACING STANDARD ========== */
   --space-xs: 0.25rem;    /* 4px */
   --space-sm: 0.5rem;     /* 8px */
   --space-md: 0.75rem;    /* 12px */
@@ -75,23 +83,20 @@
   --space-2xl: 2rem;      /* 32px */
   --space-3xl: 3rem;      /* 48px */
   
-  /* ========== BORDER RADIUS ========== */
-  --radius-sm: 0.375rem;   /* 6px */
-  --radius-md: 0.5rem;     /* 8px */
-  --radius-lg: 0.75rem;    /* 12px */
-  --radius-xl: 1rem;       /* 16px */
-  --radius-2xl: 1.5rem;    /* 24px */
-  --radius-full: 9999px;
+  /* ========== BORDER RADIUS STANDARD ========== */
+  --border-radius: 0.5rem;      /* 8px - default */
+  --border-radius-sm: 0.25rem;  /* 4px - small elements */
+  --border-radius-lg: 0.75rem;  /* 12px - cards */
+  --border-radius-xl: 1rem;     /* 16px - modals */
   
-  /* ========== TYPOGRAPHY ========== */
-  --font-size-xs: 0.75rem;    /* 12px */
-  --font-size-sm: 0.875rem;   /* 14px */
-  --font-size-base: 1rem;     /* 16px */
-  --font-size-lg: 1.125rem;   /* 18px */
-  --font-size-xl: 1.25rem;    /* 20px */
-  --font-size-2xl: 1.5rem;    /* 24px */
-  --font-size-3xl: 1.875rem;  /* 30px */
-  --font-size-4xl: 2.25rem;   /* 36px */
+  /* ========== TYPOGRAPHY STANDARD ========== */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
   
   --font-weight-normal: 400;
   --font-weight-medium: 500;
@@ -100,14 +105,18 @@
   
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
-  --line-height-relaxed: 1.75;
+  --line-height-loose: 1.75;
   
-  /* ========== TRANSITIONS ========== */
-  --transition-fast: 150ms ease-in-out;
-  --transition-medium: 250ms ease-in-out;
-  --transition-slow: 350ms ease-in-out;
+  /* ========== TRANSITION STANDARD ========== */
+  --transition-fast: 0.15s ease-out;
+  --transition-medium: 0.3s ease-out;
+  --transition-slow: 0.5s ease-out;
   
-  /* ========== Z-INDEX ========== */
+  /* ========== TEXT SHADOWS ========== */
+  --text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --text-shadow-strong: 0 2px 4px rgba(0, 0, 0, 0.7);
+  
+  /* ========== Z-INDEX STANDARD ========== */
   --z-dropdown: 1000;
   --z-sticky: 1020;
   --z-fixed: 1030;
@@ -119,15 +128,15 @@
 }
 
 /* ============================================
-   GLASS BASE STYLES
+   GLASS BASE STYLES - STANDARDIZED
    ============================================ */
 
 .glass-base {
-  background: var(--glass-primary);
-  backdrop-filter: var(--blur-medium);
-  -webkit-backdrop-filter: var(--blur-medium);
+  background: var(--glass-bg);
+  backdrop-filter: var(--backdrop-filter);
+  -webkit-backdrop-filter: var(--backdrop-filter);
   border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-glass-md);
+  box-shadow: var(--shadow-glass);
   position: relative;
   overflow: hidden;
 }
@@ -149,23 +158,23 @@
 }
 
 .glass-subtle {
-  background: var(--glass-secondary);
-  backdrop-filter: var(--blur-subtle);
-  -webkit-backdrop-filter: var(--blur-subtle);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: var(--shadow-glass-sm);
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--backdrop-filter-light);
+  -webkit-backdrop-filter: var(--backdrop-filter-light);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
 }
 
 .glass-accent {
-  background: var(--glass-accent);
-  backdrop-filter: var(--blur-strong);
-  -webkit-backdrop-filter: var(--blur-strong);
+  background: var(--glass-bg-focus);
+  backdrop-filter: var(--backdrop-filter-strong);
+  -webkit-backdrop-filter: var(--backdrop-filter-strong);
   border: 1px solid var(--glass-border-hover);
-  box-shadow: var(--shadow-glass-lg);
+  box-shadow: var(--shadow-glass-hover);
 }
 
 /* ============================================
-   INTERACTIVE STATES
+   INTERACTIVE STATES - STANDARDIZED
    ============================================ */
 
 .glass-interactive {
@@ -174,15 +183,15 @@
 }
 
 .glass-interactive:hover {
-  background: var(--glass-accent);
+  background: var(--glass-bg-hover);
   border-color: var(--glass-border-hover);
   box-shadow: var(--shadow-glass-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .glass-interactive:active {
   transform: translateY(0);
-  box-shadow: var(--shadow-glass-md);
+  box-shadow: var(--shadow-glass);
 }
 
 .glass-interactive:focus-visible {
@@ -191,7 +200,7 @@
 }
 
 /* ============================================
-   RESPONSIVE UTILITIES
+   RESPONSIVE DESIGN - STANDARDIZED
    ============================================ */
 
 @media (max-width: 768px) {
@@ -210,11 +219,50 @@
   :root {
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
-    --font-size-base: 0.9rem;
+    --font-size-base: 0.95rem;
     --font-size-lg: 1rem;
     --font-size-xl: 1.125rem;
     --font-size-2xl: 1.25rem;
     --font-size-3xl: 1.5rem;
-    --font-size-4xl: 1.875rem;
+  }
+}
+
+/* ========== NEON GLOW ANIMATIONS ========== */
+@keyframes glow-pulse {
+  0%, 100% { 
+    box-shadow: 
+      var(--shadow-glass),
+      0 0 20px rgba(255, 255, 255, 0.05);
+  }
+  50% { 
+    box-shadow: 
+      var(--shadow-glass),
+      0 0 25px rgba(255, 255, 255, 0.08);
+  }
+}
+
+@keyframes glow-pulse-blue {
+  0%, 100% { 
+    box-shadow: 
+      var(--shadow-glass),
+      0 0 20px rgba(4, 102, 200, 0.15);
+  }
+  50% { 
+    box-shadow: 
+      var(--shadow-glass),
+      0 0 30px rgba(4, 102, 200, 0.25);
+  }
+}
+
+@keyframes glow-pulse-red {
+  0%, 100% { 
+    box-shadow: 
+      var(--shadow-glass),
+      0 0 20px rgba(186, 24, 27, 0.15);
+  }
+  50% { 
+    box-shadow: 
+      var(--shadow-glass),
+      0 0 30px rgba(186, 24, 27, 0.25);
   }
 }

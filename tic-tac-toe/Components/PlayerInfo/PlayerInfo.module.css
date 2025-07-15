@@ -23,7 +23,7 @@
 .name{
   max-width: 84%;
   word-wrap: break-word;
-  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+  color: var(--text-primary);
 }
 .option{
   align-self: flex-end;

@@ -1,5 +1,5 @@
 .container { 
-  background-color: var(--PRIMARY-COLOR-BLACK);
+  background-color: var(--bg-primary);
   display: grid;
   height: 100%;
   grid-template-columns: 25% 75%;
@@ -13,7 +13,7 @@
 
 .Title { 
   grid-area: Title;
-  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+  color: var(--text-primary);
   align-self: center;
   padding-left: 25%;
   margin-left: auto;
@@ -25,7 +25,7 @@
 }
 
 .Game {
-  background-color: var(--PRIMARY-COLOR-BLACK);
+  background-color: var(--bg-primary);
   grid-area: Game;
   display: flex;
   flex-direction: column;
@@ -37,5 +37,5 @@
 }
 
 .message {
-  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+  color: var(--text-primary);
 }

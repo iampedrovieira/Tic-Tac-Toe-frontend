@@ -16,7 +16,7 @@
 }
 
 .button{
-  background-color: var(--PRIMARY-COLOR-BLACK);
+  background-color: var(--bg-primary);
 }
 
 .player1{

@@ -2,6 +2,201 @@
    GLASS UI COMPONENTS STYLES
    ============================================ */
 
+/* ========== GLOBAL BUTTON STYLES ========== */
+.btn {
+  /* Glass Button Foundation */
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--backdrop-filter);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-lg);
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-md) var(--space-xl);
+  transition: all var(--transition-medium);
+  text-shadow: var(--text-shadow);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  min-height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  box-sizing: border-box;
+  outline: none;
+  
+  /* Glass Shadow with Subtle Neon Glow */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.btn:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  
+  /* Enhanced Glow on Hover */
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 20px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  background: var(--glass-bg-focus);
+  border-color: var(--glass-border-focus);
+}
+
+.btn:focus-visible {
+  box-shadow: 
+    var(--shadow-glass-focus),
+    0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  background: var(--glass-bg);
+  border-color: var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Button Variants */
+.btn-primary {
+  /* Blue accent glow for primary buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 20px rgba(4, 102, 200, 0.15);
+}
+
+.btn-primary:hover {
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 25px rgba(4, 102, 200, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-secondary {
+  background: var(--glass-bg);
+  /* Subtle white glow for secondary buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.btn-secondary:hover {
+  background: var(--glass-bg-light);
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 20px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-accent {
+  border-color: var(--glass-border-hover);
+  /* Red accent glow for accent buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 20px rgba(186, 24, 27, 0.15);
+}
+
+.btn-accent:hover {
+  border-color: var(--glass-border-focus);
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 25px rgba(186, 24, 27, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.btn-success {
+  /* Green accent glow for success buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 20px rgba(34, 197, 94, 0.15);
+}
+
+.btn-success:hover {
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 25px rgba(34, 197, 94, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  min-height: 2rem;
+}
+
+.btn-md {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-base);
+  min-height: 2.5rem;
+}
+
+.btn-lg {
+  padding: var(--space-lg) var(--space-2xl);
+  font-size: var(--font-size-lg);
+  min-height: 3rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+/* Button Loading State */
+.btn-loading {
+  color: transparent;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid transparent;
+  border-top: 2px solid var(--text-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ========== ANIMATED GLOW EFFECTS ========== */
+.glass-button-animated {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+.glass-button-animated-blue {
+  animation: glow-pulse-blue 3s ease-in-out infinite;
+}
+
+.glass-button-animated-red {
+  animation: glow-pulse-red 3s ease-in-out infinite;
+}
+
+.glass-button-animated:hover,
+.glass-button-animated-blue:hover,
+.glass-button-animated-red:hover {
+  animation: none; /* Stop animation on hover for better UX */
+}
+
 /* ========== GLASS INPUT ========== */
 .glass-input-container {
   display: flex;
@@ -81,9 +276,10 @@
 
 /* ========== GLASS BUTTON ========== */
 .glass-button {
-  border: none;
+  border: 1px solid var(--glass-border);
   outline: none;
-  background: transparent;
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--backdrop-filter);
   color: var(--text-primary);
   font-family: inherit;
   font-weight: var(--font-weight-semibold);
@@ -97,6 +293,30 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
+  text-shadow: var(--text-shadow);
+  
+  /* Enhanced Glass Shadow with Subtle Neon Glow */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.glass-button:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  
+  /* Enhanced Hover Glow */
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 20px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-button:active {
+  transform: translateY(-1px);
+  background: var(--glass-bg-focus);
+  border-color: var(--glass-border-focus);
 }
 
 .glass-button:disabled {
@@ -106,45 +326,92 @@
 }
 
 .glass-button:disabled:hover {
-  background: var(--glass-primary);
+  background: var(--glass-bg);
   border-color: var(--glass-border);
-  box-shadow: var(--shadow-glass-md);
+  box-shadow: var(--shadow-glass);
   transform: none;
 }
 
 /* Button Variants */
 .glass-button-primary {
-  background: var(--glass-primary);
+  background: var(--glass-bg-light);
+  /* Blue accent glow for primary buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 20px rgba(4, 102, 200, 0.15);
+}
+
+.glass-button-primary:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  
+  /* Enhanced blue glow on hover */
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 25px rgba(4, 102, 200, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-button-secondary {
-  background: var(--glass-secondary);
+  background: var(--glass-bg);
+  /* Subtle white glow for secondary buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.glass-button-secondary:hover {
+  background: var(--glass-bg-light);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 20px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .glass-button-accent {
-  background: var(--glass-accent);
+  background: var(--glass-bg-light);
   border-color: var(--glass-border-hover);
+  /* Red accent glow for accent buttons */
+  box-shadow: 
+    var(--shadow-glass),
+    0 0 20px rgba(186, 24, 27, 0.15);
+}
+
+.glass-button-accent:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-focus);
+  transform: translateY(-2px);
+  
+  /* Enhanced red glow on hover */
+  box-shadow: 
+    var(--shadow-glass-hover),
+    0 0 25px rgba(186, 24, 27, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Button Sizes */
 .glass-button-sm {
   padding: var(--space-sm) var(--space-md);
   font-size: var(--font-size-sm);
-  border-radius: var(--radius-sm);
+  border-radius: var(--border-radius);
   min-height: 2rem;
 }
 
 .glass-button-md {
   padding: var(--space-md) var(--space-xl);
   font-size: var(--font-size-base);
-  border-radius: var(--radius-md);
+  border-radius: var(--border-radius-lg);
   min-height: 2.5rem;
 }
 
 .glass-button-lg {
   padding: var(--space-lg) var(--space-2xl);
   font-size: var(--font-size-lg);
-  border-radius: var(--radius-lg);
+  border-radius: var(--border-radius-lg);
   min-height: 3rem;
 }
 

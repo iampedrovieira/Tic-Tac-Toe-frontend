@@ -11,7 +11,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
-  color: var(--TEXT-PRIMARY-COLOR-WHITE);
+  color: var(--text-primary);
 }
 
 .list {
