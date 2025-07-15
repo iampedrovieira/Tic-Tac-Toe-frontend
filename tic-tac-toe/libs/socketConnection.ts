@@ -8,19 +8,26 @@ export async function connectSocket():Promise<Socket>{
     let socket = io(process.env.NEXT_PUBLIC_SOCKET_SERVER);
   
     const promiseSocketConnection = new Promise<Socket>((resolve, reject) => {
+        // Set a timeout for connection attempt
+        const connectionTimeout = setTimeout(() => {
+            socket.disconnect();
+            reject(new Error('Connection timeout'));
+        }, 15000); // 15 seconds timeout
+
         socket.on("connect", () => {
-     
+            clearTimeout(connectionTimeout);
             resolve(socket);
         });
         
         socket.on("connect_error", (err) => {
-            reject(err)
+            clearTimeout(connectionTimeout);
+            reject(err);
         });
     });
 
     await promiseSocketConnection;
 
-    return socket
+    return socket;
 
 }
 

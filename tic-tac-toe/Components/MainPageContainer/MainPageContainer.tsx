@@ -18,6 +18,7 @@ import PlayerListComponent from "../PlayersList/PlayerList";
 import BoardComponent from "../Board/Board";
 import CheckReadyModal from "../CheckReady/CheckReadyModal";
 import InputNameModal from "../InputName/InputNameModal";
+import ServerConnectionModal from "../ServerConnectionModal/ServerConnectionModal";
 
 import Player from "Types/Player";
 import Game from "Types/Game";
@@ -46,6 +47,10 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
   
   // State for mobile sidebar
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  
+  // State for server connection
+  const [isConnecting, setIsConnecting] = useState<boolean>(true);
+  const [connectionError, setConnectionError] = useState<boolean>(false);
 
   // Helper function to get current room display name
   const getCurrentRoomName = () => {
@@ -68,11 +73,16 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
   useEffect(() => {
     async function connection() {
       try {
+        setIsConnecting(true);
+        setConnectionError(false);
         const socketClient = await connectSocket();
         setSocket(socketClient);
         setHideNameBox(true);
-      } catch {
-        // Handle connection error
+        setIsConnecting(false);
+      } catch (error) {
+        console.error('Connection failed:', error);
+        setConnectionError(true);
+        setIsConnecting(false);
       }
     }
     connection();
@@ -164,13 +174,39 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
     setIsSidebarOpen(false);
   }
 
+  function handleRetryConnection() {
+    // Reset socket state and try reconnection
+    setSocket(undefined);
+    setConnectionError(false);
+    setIsConnecting(true);
+    
+    // Trigger reconnection
+    setTimeout(async () => {
+      try {
+        const socketClient = await connectSocket();
+        setSocket(socketClient);
+        setHideNameBox(true);
+        setIsConnecting(false);
+      } catch (error) {
+        console.error('Retry connection failed:', error);
+        setConnectionError(true);
+        setIsConnecting(false);
+      }
+    }, 1000);
+  }
+
   return (
     <div className={styles.container}>
+      {/* Server Connection Modal */}
+      <ServerConnectionModal 
+        isConnecting={isConnecting || connectionError} 
+      />
+      
       {name && !hideNameBox && (
         <>
           {/* Game Header - Just the title */}
           <div className={styles.GameHeader}>
-            <h1 className={styles.gameTitle}>Tricky-Tac-Toe</h1>
+            <h1 className={styles.gameTitle}>Trick-Tac-Toe</h1>
           </div>
 
           {/* Room Info - Centered above game board */}

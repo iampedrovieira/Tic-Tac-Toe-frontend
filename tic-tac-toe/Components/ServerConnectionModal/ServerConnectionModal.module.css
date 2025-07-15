@@ -1,0 +1,389 @@
+/* ============================================
+   SERVER CONNECTION MODAL STYLES
+   ============================================ */
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.modal {
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  max-width: 420px;
+  width: 80%;
+  max-height: 80vh;
+  overflow-y: auto;
+  text-align: center;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    var(--shadow-neon-mixed);
+  animation: modalSlideIn 0.6s ease-out;
+}
+
+.title {
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  margin-bottom: 6px;
+  text-shadow: var(--shadow-neon-white);
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+/* Time expectation notice */
+.timeNotice {
+  color: var(--text-secondary);
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 0.85rem;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  font-style: italic;
+}
+
+.timeNotice strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Game piece animation at the top */
+.gameAnimation {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  height: 40px;
+  align-items: center;
+}
+
+.piece {
+  font-size: 2.2rem;
+  font-weight: bold;
+  animation: bounce 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.pieceX {
+  color: var(--color-x-blue);
+  animation-delay: 0s;
+}
+
+.pieceO {
+  color: var(--color-o-red);
+  animation-delay: 0.7s;
+}
+
+.piece:nth-child(3) {
+  animation-delay: 1.4s;
+}
+
+/* Loading spinner */
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.loadingSpinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid var(--glass-border);
+  border-top: 2px solid var(--color-x-blue);
+  border-right: 2px solid var(--color-o-red);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  color: var(--text-primary);
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+}
+
+.dots span {
+  color: var(--text-secondary);
+  font-size: 1.5rem;
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.dots span:nth-child(1) { animation-delay: 0s; }
+.dots span:nth-child(2) { animation-delay: 0.2s; }
+.dots span:nth-child(3) { animation-delay: 0.4s; }
+
+/* Message container */
+.messageContainer {
+  margin: 15px 0;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.2;
+  max-width: 380px;
+  animation: messageSlide 0.5s ease-in-out;
+  background: var(--glass-bg);
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--glass-border);
+}
+
+/* Game info section */
+.gameInfo {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border-hover);
+  border-radius: 10px;
+  padding: 12px;
+  margin: 12px 0;
+}
+
+.gameInfo h3 {
+  color: var(--text-primary);
+  margin: 0 0 6px 0;
+  font-size: 1rem;
+}
+
+.gameInfo p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.2;
+}
+
+/* Button container */
+.buttonContainer {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+  flex-wrap: wrap;
+}
+
+.refreshButton,
+.retryButton {
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  min-width: 110px;
+}
+
+.refreshButton:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon-blue);
+}
+
+.retryButton {
+  background: linear-gradient(45deg, var(--color-o-red-dark), var(--color-x-blue-dark));
+  border-color: var(--color-x-blue);
+}
+
+.retryButton:hover {
+  background: linear-gradient(45deg, var(--color-o-red), var(--color-x-blue));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon-mixed);
+}
+
+/* Easter egg */
+.easterEgg {
+  margin-top: 12px;
+  padding: 6px;
+  border-radius: 5px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+}
+
+.easterEgg small {
+  color: var(--text-tertiary);
+  font-style: italic;
+  font-size: 0.75rem;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 
+      0 0 10px var(--glow-white),
+      0 0 20px var(--glow-blue),
+      0 0 30px var(--glow-red);
+  }
+  to {
+    text-shadow: 
+      0 0 20px var(--glow-white),
+      0 0 30px var(--glow-blue),
+      0 0 40px var(--glow-red);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes dotPulse {
+  0%, 80%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .modal {
+    padding: 20px;
+    margin: 15px;
+    border-radius: 12px;
+    width: 90%;
+    max-height: 90vh;
+  }
+
+  .title {
+    font-size: 1.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .piece {
+    font-size: 2rem;
+  }
+
+  .gameAnimation {
+    gap: 12px;
+    margin-bottom: 15px;
+    height: 40px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .refreshButton,
+  .retryButton {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .timeNotice {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal {
+    padding: 16px;
+    margin: 10px;
+    width: 95%;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .message {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .gameInfo {
+    padding: 12px;
+  }
+
+  .piece {
+    font-size: 1.8rem;
+  }
+
+  .loadingSpinner {
+    width: 28px;
+    height: 28px;
+  }
+
+  .timeNotice {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
