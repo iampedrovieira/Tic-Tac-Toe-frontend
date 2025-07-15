@@ -4,11 +4,19 @@
   100% { opacity: 1; }
 }
 
+@keyframes pulse {
+  0% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
 .button,
 .player1,
 .player2,
 .player1anim,
-.player2anim{
+.player2anim,
+.player1optimistic,
+.player2optimistic{
   margin:0.3vw;
   width: 10vw;
   height: 0;
@@ -33,7 +41,21 @@
   background-image: url('./button-X.svg');
   animation: blink 1s linear infinite;
 }
+
 .player2anim{
   background-image: url('./button-O.svg');
   animation: blink 1s linear infinite;
+}
+
+/* Optimistic move styles - shows the move with a subtle animation until confirmed */
+.player1optimistic{
+  background-image: url('./button-X.svg');
+  animation: pulse 2s ease-in-out infinite;
+  opacity: 0.8;
+}
+
+.player2optimistic{
+  background-image: url('./button-O.svg');
+  animation: pulse 2s ease-in-out infinite;
+  opacity: 0.8;
 }

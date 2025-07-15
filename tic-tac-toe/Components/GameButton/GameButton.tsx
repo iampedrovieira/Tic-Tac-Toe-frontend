@@ -7,7 +7,8 @@ interface propsInput {
   playerOption:number,
   option:number,
   event:Function,
-  toRemove:boolean
+  toRemove:boolean,
+  isOptimistic?:boolean
 }
 
 interface buttonState {
@@ -35,23 +36,27 @@ export default class GameButton extends
   UNSAFE_componentWillReceiveProps(_newProps: propsInput){
     let style:string
  
-  console.log(_newProps)
+    console.log(_newProps)
     if(_newProps.option == 0){
-
       if(_newProps.toRemove){
         style = styles.player1anim
-      }else{style = styles.player1}
-    
+      } else if(_newProps.isOptimistic) {
+        style = styles.player1optimistic
+      } else {
+        style = styles.player1
+      }
     }else{
-       
       if(_newProps.option == 1){
         if(_newProps.toRemove){
           style = styles.player2anim
-        }else{style = styles.player2}
+        } else if(_newProps.isOptimistic) {
+          style = styles.player2optimistic
+        } else {
+          style = styles.player2
+        }
       }else{
         style = styles.button;
       }
-      
     }
 
     let newState = {
@@ -70,32 +75,8 @@ export default class GameButton extends
     
     let handleButton = () =>{
       if(!this.state.isDisable){
-        const a = this.state.event()
-        if(this.state.event()){
-          let newState:buttonState
-          if(this.state.playerOption == 0){
-            
-            newState = {
-              isDisable : this.state.isDisable,
-              option:this.state.option,
-              playerOption:this.state.playerOption,
-              style:styles.player1,
-              event: this.state.event
-            }
-          }else{
-           
-            newState = {
-              isDisable : this.state.isDisable,
-              option:this.state.option,
-              playerOption:this.state.playerOption,
-              style:styles.player2,
-              event: this.state.event
-            }
-          }
-          this.setState(newState)
-        }else{
-          console.log('error')
-        }
+        // Simply call the event and let the parent handle the optimistic update
+        this.state.event();
       }
     }
 
@@ -125,6 +106,7 @@ export default class GameButton extends
         this.setState(newState)
       }
     }
+    
     let onMouseOut = () =>{
 
       if(!this.state.isDisable && this.state.option == -1){
