@@ -8,33 +8,167 @@
   padding: 1rem;
   box-sizing: border-box;
   grid-template-areas:
-    "Sidebar Title"
+    "Sidebar GameHeader"
     "Sidebar Game";
 }
 
-.Title { 
-  grid-area: Title;
+/* Game Header - Top Left with title and room info */
+.GameHeader { 
+  grid-area: GameHeader;
   color: var(--text-primary);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  gap: 0.5rem;
 }
 
-.Players {
+.gameTitle {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text-primary);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.roomInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.roomName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: capitalize;
+}
+
+.playerVs {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+/* Sidebar Container */
+.Sidebar {
   grid-area: Sidebar;
   display: flex;
   flex-direction: column;
   height: 100%;
+  gap: 1rem;
+}
+
+/* Room Creator Section */
+.RoomCreator {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.2),
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.RoomCreator::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.roomCreatorTitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.roomCreatorForm {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.roomInput {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 250ms ease-in-out;
+  box-sizing: border-box;
+}
+
+.roomInput::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.roomInput:focus {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+.createRoomButton {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: rgba(255, 255, 255, 0.9);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 250ms ease-in-out;
+  box-sizing: border-box;
+}
+
+.createRoomButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.createRoomButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Players Section */
+.Players {
+  flex: 1;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -48,7 +182,6 @@
   overflow: hidden;
 }
 
-/* Glass effect highlight line for Players sidebar */
 .Players::before {
   content: '';
   position: absolute;
@@ -67,15 +200,6 @@
 }
 
 .Game {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.15),
-    0 2px 8px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   grid-area: Game;
   display: flex;
   flex-direction: column;
@@ -83,38 +207,13 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Glass effect highlight line for Game area */
-.Game::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  pointer-events: none;
-  z-index: 1;
 }
 
 .message {
   color: var(--text-primary);
   text-align: center;
   padding: 1rem;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 0.75rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
   margin: 1rem;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
 }
 
 /* Responsive Design */
@@ -124,6 +223,10 @@
     gap: 0.75rem;
     padding: 0.75rem;
   }
+  
+  .gameTitle {
+    font-size: 2rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -131,15 +234,47 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto 1fr;
     grid-template-areas:
-      "Title"
+      "GameHeader"
       "Sidebar" 
       "Game";
     height: auto;
     min-height: 100vh;
   }
   
+  .Sidebar {
+    flex-direction: row;
+    height: auto;
+    gap: 0.75rem;
+  }
+  
+  .RoomCreator {
+    flex: 1;
+    min-width: 0;
+  }
+  
   .Players {
+    flex: 1;
     max-height: 200px;
+    min-width: 0;
+  }
+  
+  .gameTitle {
+    font-size: 1.75rem;
+  }
+  
+  .roomCreatorForm {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .roomInput {
+    flex: 1;
+  }
+  
+  .createRoomButton {
+    width: auto;
+    white-space: nowrap;
+    padding: 0.75rem 1rem;
   }
 }
 
@@ -149,7 +284,33 @@
     padding: 0.5rem;
   }
   
-  .Title h1 {
+  .gameTitle {
     font-size: 1.5rem;
+  }
+  
+  .roomName {
+    font-size: 1.1rem;
+  }
+  
+  .playerVs {
+    font-size: 0.9rem;
+  }
+  
+  .Sidebar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .roomCreatorForm {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .createRoomButton {
+    width: 100%;
+  }
+  
+  .RoomCreator {
+    padding: 1rem;
   }
 }

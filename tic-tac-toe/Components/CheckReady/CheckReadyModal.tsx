@@ -15,17 +15,7 @@ const CheckReadyModal: React.FC<CheckReadyModalProps> = ({
   check,
   onChangeCheck
 }) => {
-  const handleClose = (e: React.MouseEvent) => {
-    // Only close if clicking the overlay, not the modal content
-    if (e.target === e.currentTarget) {
-      setOpen(false);
-    }
-  };
-
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      setOpen(false);
-    }
     if (e.key === 'Enter' || e.key === ' ') {
       onChangeCheck();
     }
@@ -34,10 +24,9 @@ const CheckReadyModal: React.FC<CheckReadyModalProps> = ({
   if (!open) return null;
 
   return (
-    <div className={styles.overlay} onClick={handleClose}>
+    <div className={styles.overlay}>
       <div 
         className={styles.container}
-        onClick={e => e.stopPropagation()}
       >
         <div className={styles.content}>
           <div className={styles.header}>
@@ -83,15 +72,6 @@ const CheckReadyModal: React.FC<CheckReadyModalProps> = ({
                 </span>
               </label>
             </div>
-          </div>
-          
-          <div className={styles.footer}>
-            <button
-              onClick={() => setOpen(false)}
-              className={styles.button}
-            >
-              Close
-            </button>
           </div>
         </div>
       </div>

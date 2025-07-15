@@ -40,6 +40,26 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
   const [hideCheckReadyBox, setHideCheckReadyBox] = useState<boolean>(false);
   const [checkBox, setCheckBox] = useState<boolean>(false);
   const [playersList, setPlayersList] = useState<Player[]>([]);
+  
+  // New state for room creation
+  const [newRoomName, setNewRoomName] = useState<string>("");
+
+  // Helper function to get current room display name
+  const getCurrentRoomName = () => {
+    return roomName === 'LOBBY' ? 'Main Lobby' : roomName;
+  };
+
+  // Helper function to get player vs player text
+  const getPlayerVsText = () => {
+    if (game?.player1 && game?.player2) {
+      return `${game.player1.name} vs ${game.player2.name}`;
+    } else if (game?.player1) {
+      return `${game.player1.name} vs ...`;
+    } else if (game?.player2) {
+      return `... vs ${game.player2.name}`;
+    }
+    return "Waiting for players...";
+  };
 
   // Socket server connection
   useEffect(() => {
@@ -90,16 +110,65 @@ const MainPageContainer: React.FC<MainPageContainerProps> = ({ roomName = 'LOBBY
     socket!.emit("playerMove", move, roomName);
   }
 
+  function handleCreateRoom() {
+    if (!newRoomName.trim()) return;
+    
+    // Navigate to the new room - you might want to use a router for this
+    const cleanRoomName = newRoomName.trim().replace(/\s+/g, '-');
+    window.location.href = `/room/${cleanRoomName}`;
+  }
+
+  function handleRoomInputKeyDown(e: React.KeyboardEvent) {
+    if (e.key === 'Enter') {
+      handleCreateRoom();
+    }
+  }
+
   return (
     <div className={styles.container}>
       {name && !hideNameBox && (
         <>
-          <div className={styles.Title}> 
-            <h1>{title}</h1>
+          {/* Game Header - Top Left */}
+          <div className={styles.GameHeader}>
+            <h1 className={styles.gameTitle}>Tricky-Tac-Toe</h1>
+            <div className={styles.roomInfo}>
+              <h2 className={styles.roomName}>{getCurrentRoomName()}</h2>
+              <h3 className={styles.playerVs}>{getPlayerVsText()}</h3>
+            </div>
           </div>
-          <div className={styles.Players}>
-            <PlayerListComponent players={playersList} />
+
+          {/* Sidebar with Room Creator and Players */}
+          <div className={styles.Sidebar}>
+            {/* Room Creator */}
+            <div className={styles.RoomCreator}>
+              <h3 className={styles.roomCreatorTitle}>Create New Room</h3>
+              <div className={styles.roomCreatorForm}>
+                <input
+                  type="text"
+                  value={newRoomName}
+                  onChange={(e) => setNewRoomName(e.target.value)}
+                  onKeyDown={handleRoomInputKeyDown}
+                  placeholder="Enter room name..."
+                  className={styles.roomInput}
+                  maxLength={20}
+                />
+                <button
+                  onClick={handleCreateRoom}
+                  disabled={!newRoomName.trim()}
+                  className={styles.createRoomButton}
+                >
+                  Create
+                </button>
+              </div>
+            </div>
+
+            {/* Players List */}
+            <div className={styles.Players}>
+              <PlayerListComponent players={playersList} />
+            </div>
           </div>
+
+          {/* Game Area */}
           <div className={styles.Game}>
             {socket && game && (
               <BoardComponent 
